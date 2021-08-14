@@ -20,3 +20,15 @@ INSERT INTO `products` VALUES
 
 UNLOCK TABLES;
 
+DROP TABLE IF EXISTS `transactions`;
+
+CREATE TABLE `transactions` (
+  `transaction_id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `transaction_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`transaction_id`),
+  KEY `transactions_FK` (`product_id`),
+  CONSTRAINT `transactions_FK` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+

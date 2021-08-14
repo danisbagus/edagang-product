@@ -35,10 +35,16 @@ func main() {
 	productService := service.NewProductService(productRepo)
 	productHandler := handler.ProductHandler{Service: productService}
 
+	transactionRepo := repo.NewTransactionRepo(client)
+	TransactionService := service.NewTransactionService(transactionRepo, productRepo)
+	transactionHandler := handler.TransactionHandler{Service: TransactionService}
+
 	// routing
 	router.HandleFunc("/products", productHandler.GetProductList).Methods(http.MethodGet)
 	router.HandleFunc("/products/{product_id:[0-9]+}", productHandler.GetProductDetail).Methods(http.MethodGet)
 	router.HandleFunc("/products", productHandler.NewProduct).Methods(http.MethodPost)
+
+	router.HandleFunc("/transactions", transactionHandler.NewTransaction).Methods(http.MethodPost)
 
 	// starting server
 	logger.Info("Starting the application")
