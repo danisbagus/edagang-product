@@ -3,6 +3,7 @@ package dto
 import (
 	"github.com/danisbagus/semimarket-product/internal/core/domain"
 	"github.com/danisbagus/semimarket-product/pkg/errs"
+	validation "github.com/go-ozzo/ozzo-validation"
 )
 
 var ValidProductCategories = map[string]bool{
@@ -66,8 +67,27 @@ func NewNewProductResponse(data *domain.ProductModel) *NewProductResponse {
 
 func (r NewProductRequest) Validate() *errs.AppError {
 
-	if ValidProductCategories[r.ProductCategory] {
+	if err := validation.Validate(r.ProductName, validation.Required); err != nil {
+		return errs.NewValidationError("Product name is required")
+
+	}
+
+	if err := validation.Validate(r.ProductCategory, validation.Required); err != nil {
+		return errs.NewValidationError("Product category name is required")
+
+	}
+
+	if !ValidProductCategories[r.ProductCategory] {
 		return errs.NewValidationError("Product category is not valid")
+	}
+
+	if err := validation.Validate(r.Quantity, validation.Required); err != nil {
+		return errs.NewValidationError("Product quantity is required")
+
+	}
+
+	if r.Quantity <= 0 {
+		return errs.NewValidationError("Product quantity must more than 0")
 	}
 	return nil
 }

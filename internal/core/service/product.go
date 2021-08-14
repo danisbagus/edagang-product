@@ -1,6 +1,7 @@
 package service
 
 import (
+	"github.com/danisbagus/semimarket-product/internal/core/domain"
 	"github.com/danisbagus/semimarket-product/internal/core/port"
 	"github.com/danisbagus/semimarket-product/internal/dto"
 	"github.com/danisbagus/semimarket-product/pkg/errs"
@@ -35,6 +36,28 @@ func (r ProductService) GetDetail(productID int64) (*dto.ProductResponse, *errs.
 	}
 
 	response := dto.NewGetDetailProductResponse(data)
+
+	return response, nil
+}
+
+func (r ProductService) NewProduct(req *dto.NewProductRequest) (*dto.NewProductResponse, *errs.AppError) {
+
+	err := req.Validate()
+	if err != nil {
+		return nil, err
+	}
+
+	form := domain.ProductModel{
+		ProductName:     req.ProductName,
+		ProductCategory: req.ProductCategory,
+		Quantity:        req.Quantity,
+	}
+
+	newData, err := r.repo.Create(&form)
+	if err != nil {
+		return nil, err
+	}
+	response := dto.NewNewProductResponse(newData)
 
 	return response, nil
 }

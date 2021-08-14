@@ -38,6 +38,7 @@ func main() {
 	// routing
 	router.HandleFunc("/products", productHandler.GetProductList).Methods(http.MethodGet)
 	router.HandleFunc("/products/{product_id:[0-9]+}", productHandler.GetProductDetail).Methods(http.MethodGet)
+	router.HandleFunc("/products", productHandler.NewProduct).Methods(http.MethodPost)
 
 	// starting server
 	logger.Info("Starting the application")

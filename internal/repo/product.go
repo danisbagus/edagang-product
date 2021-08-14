@@ -52,3 +52,23 @@ func (r ProductRepo) FindOneByID(productID int64) (*domain.ProductModel, *errs.A
 
 	return &data, nil
 }
+
+func (r ProductRepo) Create(data *domain.ProductModel) (*domain.ProductModel, *errs.AppError) {
+	insertSql := "insert into products (product_name, product_category, quantity) values (?,?,?)"
+
+	result, err := r.db.Exec(insertSql, data.ProductName, data.ProductCategory, data.Quantity)
+	if err != nil {
+		logger.Error("Error while creating new employee " + err.Error())
+		return nil, errs.NewUnexpectedError("Unexpected database error")
+	}
+
+	id, err := result.LastInsertId()
+	if err != nil {
+		logger.Error("Error while get last insert id for new employee" + err.Error())
+		return nil, errs.NewUnexpectedError("Unexpected database error")
+	}
+
+	data.ProductID = id
+
+	return data, nil
+}

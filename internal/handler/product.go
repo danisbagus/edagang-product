@@ -6,6 +6,7 @@ import (
 	"strconv"
 
 	"github.com/danisbagus/semimarket-product/internal/core/port"
+	"github.com/danisbagus/semimarket-product/internal/dto"
 	"github.com/gorilla/mux"
 )
 
@@ -34,6 +35,22 @@ func (rc ProductHandler) GetProductDetail(w http.ResponseWriter, r *http.Request
 		return
 	}
 	writeResponse(w, http.StatusOK, data)
+}
+
+func (rc ProductHandler) NewProduct(w http.ResponseWriter, r *http.Request) {
+	var request dto.NewProductRequest
+
+	if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
+		writeResponse(w, http.StatusBadRequest, err.Error())
+		return
+	}
+
+	data, err := rc.Service.NewProduct(&request)
+	if err != nil {
+		writeResponse(w, err.Code, err.AsMessage())
+		return
+	}
+	writeResponse(w, http.StatusCreated, data)
 }
 
 func writeResponse(w http.ResponseWriter, code int, data interface{}) {
