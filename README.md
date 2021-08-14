@@ -1,2 +1,2 @@
-# semimarket-poduct
+# semimarket-product
 Simple E-Commerce Application
