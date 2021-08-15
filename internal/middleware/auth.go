@@ -2,7 +2,6 @@ package middleware
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 	"strings"
 
@@ -21,8 +20,6 @@ func (rc AuthMiddleware) AuthorizationHandler() func(http.Handler) http.Handler 
 			currentRoute := mux.CurrentRoute(r)
 			currentRouteVars := mux.Vars(r)
 			authHeader := r.Header.Get("Authorization")
-
-			fmt.Println("fdfdfd", currentRouteVars)
 
 			if authHeader != "" {
 				token := getTokenFromHeader(authHeader)

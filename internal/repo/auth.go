@@ -19,8 +19,6 @@ func NewAuthRepo() port.IAuthRepo {
 func (r AuthRepo) IsAuthorized(token string, routeName string, vars map[string]string) bool {
 	u := generateVerifyURL(token, routeName, vars)
 
-	fmt.Println("new urldfdfd", u)
-
 	if response, err := http.Get(u); err != nil {
 		fmt.Println("Error while sending..." + err.Error())
 		return false
@@ -32,8 +30,6 @@ func (r AuthRepo) IsAuthorized(token string, routeName string, vars map[string]s
 		}
 		return m["isAuthorized"]
 	}
-
-	return true
 }
 
 func generateVerifyURL(token string, routeName string, vars map[string]string) string {
