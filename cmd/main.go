@@ -5,6 +5,7 @@ import (
 
 	"github.com/danisbagus/semimarket-product/internal/core/service"
 	"github.com/danisbagus/semimarket-product/internal/handler"
+	"github.com/danisbagus/semimarket-product/internal/middleware"
 	"github.com/danisbagus/semimarket-product/internal/repo"
 	"github.com/danisbagus/semimarket-product/pkg/logger"
 
@@ -40,11 +41,15 @@ func main() {
 	transactionHandler := handler.TransactionHandler{Service: TransactionService}
 
 	// routing
-	router.HandleFunc("/products", productHandler.GetProductList).Methods(http.MethodGet)
-	router.HandleFunc("/products/{product_id:[0-9]+}", productHandler.GetProductDetail).Methods(http.MethodGet)
-	router.HandleFunc("/products", productHandler.NewProduct).Methods(http.MethodPost)
+	router.HandleFunc("/products", productHandler.GetProductList).Methods(http.MethodGet).Name("GetProductList")
+	router.HandleFunc("/products/{product_id:[0-9]+}", productHandler.GetProductDetail).Methods(http.MethodGet).Name("GetProductDetail")
+	router.HandleFunc("/products", productHandler.NewProduct).Methods(http.MethodPost).Name("NewProduct")
 
-	router.HandleFunc("/transactions", transactionHandler.NewTransaction).Methods(http.MethodPost)
+	router.HandleFunc("/transactions", transactionHandler.NewTransaction).Methods(http.MethodPost).Name("NewTransaction")
+
+	// middleware
+	authMiddleware := middleware.AuthMiddleware{repo.NewAuthRepo()}
+	router.Use(authMiddleware.AuthorizationHandler())
 
 	// starting server
 	logger.Info("Starting the application")
