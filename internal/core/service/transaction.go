@@ -3,10 +3,10 @@ package service
 import (
 	"time"
 
+	"github.com/danisbagus/semimarket-lib/errs"
 	"github.com/danisbagus/semimarket-product/internal/core/domain"
 	"github.com/danisbagus/semimarket-product/internal/core/port"
 	"github.com/danisbagus/semimarket-product/internal/dto"
-	"github.com/danisbagus/semimarket-product/pkg/errs"
 )
 
 const dbTSLayout = "2006-01-02 15:04:05"

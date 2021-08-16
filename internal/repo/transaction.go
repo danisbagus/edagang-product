@@ -1,10 +1,10 @@
 package repo
 
 import (
+	"github.com/danisbagus/semimarket-lib/errs"
+	"github.com/danisbagus/semimarket-lib/logger"
 	"github.com/danisbagus/semimarket-product/internal/core/domain"
 	"github.com/danisbagus/semimarket-product/internal/core/port"
-	"github.com/danisbagus/semimarket-product/pkg/errs"
-	"github.com/danisbagus/semimarket-product/pkg/logger"
 	"github.com/jmoiron/sqlx"
 )
 

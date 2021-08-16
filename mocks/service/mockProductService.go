@@ -7,8 +7,8 @@ package service
 import (
 	reflect "reflect"
 
+	errs "github.com/danisbagus/semimarket-lib/errs"
 	dto "github.com/danisbagus/semimarket-product/internal/dto"
-	errs "github.com/danisbagus/semimarket-product/pkg/errs"
 	gomock "github.com/golang/mock/gomock"
 )
 

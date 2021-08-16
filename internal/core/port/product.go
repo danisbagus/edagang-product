@@ -1,9 +1,9 @@
 package port
 
 import (
+	"github.com/danisbagus/semimarket-lib/errs"
 	"github.com/danisbagus/semimarket-product/internal/core/domain"
 	"github.com/danisbagus/semimarket-product/internal/dto"
-	"github.com/danisbagus/semimarket-product/pkg/errs"
 )
 
 //go:generate mockgen -destination=../../../mocks/repo/mockProductRepo.go -package=repo github.com/danisbagus/semimarket-product/internal/core/port IProductRepo

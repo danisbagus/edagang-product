@@ -3,11 +3,11 @@ package main
 import (
 	"log"
 
+	"github.com/danisbagus/semimarket-lib/logger"
 	"github.com/danisbagus/semimarket-product/internal/core/service"
 	"github.com/danisbagus/semimarket-product/internal/handler"
 	"github.com/danisbagus/semimarket-product/internal/middleware"
 	"github.com/danisbagus/semimarket-product/internal/repo"
-	"github.com/danisbagus/semimarket-product/pkg/logger"
 
 	"net/http"
 	"time"

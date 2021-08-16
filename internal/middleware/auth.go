@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"strings"
 
+	"github.com/danisbagus/semimarket-lib/errs"
 	"github.com/danisbagus/semimarket-product/internal/core/port"
-	"github.com/danisbagus/semimarket-product/pkg/errs"
 	"github.com/gorilla/mux"
 )
 

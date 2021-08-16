@@ -5,9 +5,9 @@ import (
 	"net/http/httptest"
 	"testing"
 
+	"github.com/danisbagus/semimarket-lib/errs"
 	"github.com/danisbagus/semimarket-product/internal/dto"
 	"github.com/danisbagus/semimarket-product/mocks/service"
-	"github.com/danisbagus/semimarket-product/pkg/errs"
 	"github.com/golang/mock/gomock"
 	"github.com/gorilla/mux"
 )

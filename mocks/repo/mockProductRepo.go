@@ -7,8 +7,8 @@ package repo
 import (
 	reflect "reflect"
 
+	errs "github.com/danisbagus/semimarket-lib/errs"
 	domain "github.com/danisbagus/semimarket-product/internal/core/domain"
-	errs "github.com/danisbagus/semimarket-product/pkg/errs"
 	gomock "github.com/golang/mock/gomock"
 )
 
