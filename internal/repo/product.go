@@ -3,10 +3,10 @@ package repo
 import (
 	"database/sql"
 
-	"github.com/danisbagus/semimarket-lib/errs"
-	"github.com/danisbagus/semimarket-lib/logger"
-	"github.com/danisbagus/semimarket-product/internal/core/domain"
-	"github.com/danisbagus/semimarket-product/internal/core/port"
+	"github.com/danisbagus/edagang-package/errs"
+	"github.com/danisbagus/edagang-package/logger"
+	"github.com/danisbagus/edagang-product/internal/core/domain"
+	"github.com/danisbagus/edagang-product/internal/core/port"
 	"github.com/jmoiron/sqlx"
 )
 

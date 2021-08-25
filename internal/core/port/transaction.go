@@ -1,9 +1,9 @@
 package port
 
 import (
-	"github.com/danisbagus/semimarket-lib/errs"
-	"github.com/danisbagus/semimarket-product/internal/core/domain"
-	"github.com/danisbagus/semimarket-product/internal/dto"
+	"github.com/danisbagus/edagang-package/errs"
+	"github.com/danisbagus/edagang-product/internal/core/domain"
+	"github.com/danisbagus/edagang-product/internal/dto"
 )
 
 type ITransactionRepo interface {

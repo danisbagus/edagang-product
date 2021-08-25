@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/danisbagus/semimarket-lib/logger"
-	"github.com/danisbagus/semimarket-product/internal/core/port"
+	"github.com/danisbagus/edagang-package/logger"
+	"github.com/danisbagus/edagang-product/internal/core/port"
 )
 
 type AuthRepo struct{}

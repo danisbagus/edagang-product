@@ -3,11 +3,11 @@ package service
 import (
 	"testing"
 
-	"github.com/danisbagus/semimarket-lib/errs"
-	"github.com/danisbagus/semimarket-product/internal/core/domain"
-	"github.com/danisbagus/semimarket-product/internal/core/port"
-	"github.com/danisbagus/semimarket-product/internal/dto"
-	"github.com/danisbagus/semimarket-product/mocks/repo"
+	"github.com/danisbagus/edagang-package/errs"
+	"github.com/danisbagus/edagang-product/internal/core/domain"
+	"github.com/danisbagus/edagang-product/internal/core/port"
+	"github.com/danisbagus/edagang-product/internal/dto"
+	"github.com/danisbagus/edagang-product/mocks/repo"
 	"github.com/golang/mock/gomock"
 )
 

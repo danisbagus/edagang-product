@@ -4,8 +4,8 @@ github.com/benbjohnson/clock v1.1.0/go.mod h1:J11/hYXuz8f4ySSvYwY0FKfm+ezbsZBKZx
 github.com/coreos/go-systemd/v22 v22.3.2/go.mod h1:Y58oyj3AT4RCenI/lSvhwexgC+NSVTIJ3seZv2GcEnc=
 github.com/danisbagus/djadwalin v0.0.0-20210814053708-8ed1171177ec h1:kJPEG8LCadkcGvSZUnx9gSKUInIF/mJkVqTw+6OQwaI=
 github.com/danisbagus/djadwalin v0.0.0-20210814053708-8ed1171177ec/go.mod h1:WQthNUsCm6Xm+RTaZMIDF7o2Md0V2Xb3WKMPV2OfF6s=
-github.com/danisbagus/semimarket-lib v1.0.0 h1:HyC8ZSPN/LMHurPgBj797DC+xcKIFQz7bnYBXJ5aU5Y=
-github.com/danisbagus/semimarket-lib v1.0.0/go.mod h1:sovgHRIwfb+YwEVc9QcD7dAzRlumcdBnU3tL8Sh/jA8=
+github.com/danisbagus/edagang-package v1.0.0 h1:HyC8ZSPN/LMHurPgBj797DC+xcKIFQz7bnYBXJ5aU5Y=
+github.com/danisbagus/edagang-package v1.0.0/go.mod h1:sovgHRIwfb+YwEVc9QcD7dAzRlumcdBnU3tL8Sh/jA8=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=

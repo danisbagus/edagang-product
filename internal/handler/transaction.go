@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/danisbagus/semimarket-product/internal/core/port"
-	"github.com/danisbagus/semimarket-product/internal/dto"
+	"github.com/danisbagus/edagang-product/internal/core/port"
+	"github.com/danisbagus/edagang-product/internal/dto"
 )
 
 type TransactionHandler struct {
