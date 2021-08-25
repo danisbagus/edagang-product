@@ -7,7 +7,7 @@ package repo
 import (
 	reflect "reflect"
 
-	errs "github.com/danisbagus/edagang-package/errs"
+	errs "github.com/danisbagus/edagang-pkg/errs"
 	domain "github.com/danisbagus/edagang-product/internal/core/domain"
 	gomock "github.com/golang/mock/gomock"
 )

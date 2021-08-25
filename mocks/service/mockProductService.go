@@ -7,7 +7,7 @@ package service
 import (
 	reflect "reflect"
 
-	errs "github.com/danisbagus/edagang-package/errs"
+	errs "github.com/danisbagus/edagang-pkg/errs"
 	dto "github.com/danisbagus/edagang-product/internal/dto"
 	gomock "github.com/golang/mock/gomock"
 )

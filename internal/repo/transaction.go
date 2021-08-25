@@ -1,8 +1,8 @@
 package repo
 
 import (
-	"github.com/danisbagus/edagang-package/errs"
-	"github.com/danisbagus/edagang-package/logger"
+	"github.com/danisbagus/edagang-pkg/errs"
+	"github.com/danisbagus/edagang-pkg/logger"
 	"github.com/danisbagus/edagang-product/internal/core/domain"
 	"github.com/danisbagus/edagang-product/internal/core/port"
 	"github.com/jmoiron/sqlx"

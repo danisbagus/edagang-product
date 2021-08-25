@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/danisbagus/edagang-package/logger"
+	"github.com/danisbagus/edagang-pkg/logger"
 	"github.com/danisbagus/edagang-product/internal/core/port"
 )
 

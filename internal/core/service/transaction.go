@@ -3,7 +3,7 @@ package service
 import (
 	"time"
 
-	"github.com/danisbagus/edagang-package/errs"
+	"github.com/danisbagus/edagang-pkg/errs"
 	"github.com/danisbagus/edagang-product/internal/core/domain"
 	"github.com/danisbagus/edagang-product/internal/core/port"
 	"github.com/danisbagus/edagang-product/internal/dto"

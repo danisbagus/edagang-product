@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/danisbagus/edagang-package/errs"
+	"github.com/danisbagus/edagang-pkg/errs"
 	"github.com/danisbagus/edagang-product/internal/core/port"
 	"github.com/gorilla/mux"
 )

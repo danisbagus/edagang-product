@@ -5,7 +5,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/danisbagus/edagang-package/errs"
+	"github.com/danisbagus/edagang-pkg/errs"
 	"github.com/danisbagus/edagang-product/internal/dto"
 	"github.com/danisbagus/edagang-product/mocks/service"
 	"github.com/golang/mock/gomock"
