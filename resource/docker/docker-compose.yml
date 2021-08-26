@@ -11,7 +11,21 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: danisbagus
       TZ: Asia/Jakarta
+    networks:
+      - edagang-product-net
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 18080:8080
+    networks:
+      - edagang-product-net
 
 volumes:
   mysqldata:
     driver: local
+
+networks:
+  edagang-product-net:
+    driver: bridge
