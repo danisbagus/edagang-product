@@ -61,3 +61,11 @@ func (r ProductService) NewProduct(req *dto.NewProductRequest) (*dto.NewProductR
 
 	return response, nil
 }
+
+func (r ProductService) RemoveProduct(ProductID int64) *errs.AppError {
+	err := r.repo.Delete(ProductID)
+	if err != nil {
+		return err
+	}
+	return nil
+}

@@ -19,14 +19,7 @@ import (
 
 func main() {
 	// sql driver
-	client, err := sqlx.Open("mysql", "root:danisbagus@tcp(localhost:9001)/semimarket")
-	if err != nil {
-		panic(err)
-	}
-
-	client.SetConnMaxLifetime(time.Minute * 3)
-	client.SetMaxOpenConns(10)
-	client.SetMaxIdleConns(10)
+	client := GetClient()
 
 	// multiplexer
 	router := mux.NewRouter()
@@ -36,22 +29,30 @@ func main() {
 	productService := service.NewProductService(productRepo)
 	productHandler := handler.ProductHandler{Service: productService}
 
-	transactionRepo := repo.NewTransactionRepo(client)
-	TransactionService := service.NewTransactionService(transactionRepo, productRepo)
-	transactionHandler := handler.TransactionHandler{Service: TransactionService}
-
 	// routing
 	router.HandleFunc("/products", productHandler.GetProductList).Methods(http.MethodGet).Name("GetProductList")
 	router.HandleFunc("/products/{product_id:[0-9]+}", productHandler.GetProductDetail).Methods(http.MethodGet).Name("GetProductDetail")
 	router.HandleFunc("/products", productHandler.NewProduct).Methods(http.MethodPost).Name("NewProduct")
-
-	router.HandleFunc("/transactions", transactionHandler.NewTransaction).Methods(http.MethodPost).Name("NewTransaction")
+	router.HandleFunc("/products/{product_id:[0-9]+}", productHandler.RemoveProduct).Methods(http.MethodDelete).Name("RemoveProduct")
 
 	// middleware
 	authMiddleware := middleware.AuthMiddleware{repo.NewAuthRepo()}
 	router.Use(authMiddleware.AuthorizationHandler())
 
 	// starting server
-	logger.Info("Starting the application")
+	logger.Info("Starting product service")
 	log.Fatal(http.ListenAndServe("localhost:9000", router))
+}
+
+func GetClient() *sqlx.DB {
+	client, err := sqlx.Open("mysql", "root:danisbagus@tcp(localhost:9001)/edagang")
+	if err != nil {
+		panic(err)
+	}
+
+	client.SetConnMaxLifetime(time.Minute * 3)
+	client.SetMaxOpenConns(10)
+	client.SetMaxIdleConns(10)
+
+	return client
 }

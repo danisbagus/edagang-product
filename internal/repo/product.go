@@ -72,3 +72,22 @@ func (r ProductRepo) Create(data *domain.ProductModel) (*domain.ProductModel, *e
 
 	return data, nil
 }
+
+func (r ProductRepo) Delete(productID int64) *errs.AppError {
+	deleteSql := "delete from products where product_id = ?"
+
+	stmt, err := r.db.Prepare(deleteSql)
+	if err != nil {
+		logger.Error("Error while delete employee " + err.Error())
+		return errs.NewUnexpectedError("Unexpected database error")
+	}
+
+	_, err = stmt.Exec(productID)
+	if err != nil {
+		logger.Error("Error while delete employee " + err.Error())
+		return errs.NewUnexpectedError("Unexpected database error")
+	}
+
+	return nil
+
+}

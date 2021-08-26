@@ -53,6 +53,20 @@ func (rc ProductHandler) NewProduct(w http.ResponseWriter, r *http.Request) {
 	writeResponse(w, http.StatusCreated, data)
 }
 
+func (rc ProductHandler) RemoveProduct(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	productID, _ := strconv.Atoi(vars["product_id"])
+
+	err := rc.Service.RemoveProduct(int64(productID))
+	if err != nil {
+		writeResponse(w, err.Code, err.AsMessage())
+		return
+	}
+	writeResponse(w, http.StatusOK, map[string]bool{
+		"success": true,
+	})
+}
+
 func writeResponse(w http.ResponseWriter, code int, data interface{}) {
 	w.Header().Add("Content-Type", "application/json")
 	w.WriteHeader(code)
