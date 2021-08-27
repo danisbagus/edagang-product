@@ -34,6 +34,7 @@ func main() {
 	router.HandleFunc("/products/{product_id:[0-9]+}", productHandler.GetProductDetail).Methods(http.MethodGet).Name("GetProductDetail")
 	router.HandleFunc("/products", productHandler.NewProduct).Methods(http.MethodPost).Name("NewProduct")
 	router.HandleFunc("/products/{product_id:[0-9]+}", productHandler.RemoveProduct).Methods(http.MethodDelete).Name("RemoveProduct")
+	router.HandleFunc("/products/{product_id:[0-9]+}", productHandler.UpdateProduct).Methods(http.MethodPatch).Name("UpdateProduct")
 
 	// middleware
 	authMiddleware := middleware.AuthMiddleware{repo.NewAuthRepo()}

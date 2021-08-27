@@ -91,3 +91,22 @@ func (r ProductRepo) Delete(productID int64) *errs.AppError {
 	return nil
 
 }
+
+func (r ProductRepo) Update(productID int64, data *domain.ProductModel) *errs.AppError {
+	updateSql := "update products set product_name=?, product_category=?, quantity=? where product_id=?"
+
+	stmt, err := r.db.Prepare(updateSql)
+	if err != nil {
+		logger.Error("Error while update employee " + err.Error())
+		return errs.NewUnexpectedError("Unexpected database error")
+	}
+
+	_, err = stmt.Exec(data.ProductName, data.ProductCategory, data.Quantity, productID)
+	if err != nil {
+		logger.Error("Error while update employee " + err.Error())
+		return errs.NewUnexpectedError("Unexpected database error")
+	}
+
+	return nil
+
+}

@@ -69,3 +69,25 @@ func (r ProductService) RemoveProduct(ProductID int64) *errs.AppError {
 	}
 	return nil
 }
+
+func (r ProductService) UpdateProduct(productID int64, req *dto.NewProductRequest) (*dto.ProductResponse, *errs.AppError) {
+
+	err := req.Validate()
+	if err != nil {
+		return nil, err
+	}
+
+	form := domain.ProductModel{
+		ProductName:     req.ProductName,
+		ProductCategory: req.ProductCategory,
+		Quantity:        req.Quantity,
+	}
+
+	err = r.repo.Update(productID, &form)
+	if err != nil {
+		return nil, err
+	}
+	response := dto.NewUpdateProductResponse(&form)
+
+	return response, nil
+}

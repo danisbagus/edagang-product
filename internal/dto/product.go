@@ -65,6 +65,17 @@ func NewNewProductResponse(data *domain.ProductModel) *NewProductResponse {
 	return result
 }
 
+func NewUpdateProductResponse(data *domain.ProductModel) *ProductResponse {
+	result := &ProductResponse{
+		ProductID:       data.ProductID,
+		ProductName:     data.ProductName,
+		ProductCategory: data.ProductCategory,
+		Quantity:        data.Quantity,
+	}
+
+	return result
+}
+
 func (r NewProductRequest) Validate() *errs.AppError {
 
 	if err := validation.Validate(r.ProductName, validation.Required); err != nil {

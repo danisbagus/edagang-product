@@ -67,6 +67,25 @@ func (rc ProductHandler) RemoveProduct(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
+func (rc ProductHandler) UpdateProduct(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	productID, _ := strconv.Atoi(vars["product_id"])
+
+	var request dto.NewProductRequest
+
+	if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
+		writeResponse(w, http.StatusBadRequest, err.Error())
+		return
+	}
+
+	data, err := rc.Service.UpdateProduct(int64(productID), &request)
+	if err != nil {
+		writeResponse(w, err.Code, err.AsMessage())
+		return
+	}
+	writeResponse(w, http.StatusOK, data)
+}
+
 func writeResponse(w http.ResponseWriter, code int, data interface{}) {
 	w.Header().Add("Content-Type", "application/json")
 	w.WriteHeader(code)
